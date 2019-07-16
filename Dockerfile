@@ -37,6 +37,10 @@ connection-url=jdbc:mysql://127.0.0.1:3306\n\
 connection-user=root\n\
 connection-password=123456\n'\ > ${PRESTO_ETC_DIR}/catalog/mysql.properties
 
+RUN echo 'connector.name=hive-hadoop2\n\
+hive.metastore.uri=thrift://127.0.0.1:10000\n\
+hive.config.resources=/usr/local/service/hadoop/etc/hadoop/core-site.xml,/usr/local/service/hadoop/etc/hadoop/hdfs-site.xml\n\
+hive.allow-drop-table=true\n'\ > ${PRESTO_ETC_DIR}/catalog/hive.properties
 
-COPY ./presto_docker_entrypoint.sh /presto_docker_entrypoint.sh
-ENTRYPOINT ["bash", "/presto_docker_entrypoint.sh"]
+COPY ./entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["bash", "/entrypoint.sh"]
