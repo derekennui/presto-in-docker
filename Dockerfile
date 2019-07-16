@@ -25,8 +25,8 @@ RUN echo '-server\n\
 RUN echo 'coordinator=true\n\
 node-scheduler.include-coordinator=true\n\
 http-server.http.port=8888\n\
-query.max-memory=0.4GB\n\
-query.max-memory-per-node=0.2GB\n\
+query.max-memory=1GB\n\
+query.max-memory-per-node=1GB\n\
 discovery-server.enabled=true\n\
 discovery.uri=http://127.0.0.1:8888\n'\ > ${PRESTO_ETC_DIR}/config.properties
 
